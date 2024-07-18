@@ -1,0 +1,68 @@
+.modal-thankyou {
+  width: 720px !important;
+  & .ant-modal-content {
+    padding: 0;
+  }
+}
+
+// content
+.modal-content {
+  padding: 16px 0 16px 16px;
+  &__desc__thank {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 12px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    &:hover .scroll-button {
+      display: block;
+    }
+    &-card {
+      display: flex;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      & > * {
+        flex: 0 0 320px;
+        scroll-snap-align: start;
+      }
+    }
+  }
+}
+
+// scroll
+.scroll-button {
+  position: absolute;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 100vh;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: none;
+}
+
+.prev-button {
+  top: 50%;
+  left: 12px;
+  transform: translateY(50%);
+  z-index: 10;
+}
+
+.next-button {
+  top: 50%;
+  margin-top: 5px;
+  transform: translateY(50%);
+  right: 12px;
+  z-index: 10;
+}
