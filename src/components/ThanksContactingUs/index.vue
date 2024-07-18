@@ -135,6 +135,7 @@ watch(showModal, (newVal) => {
         </svg>
       </div>
     </div>
+
     <div class="modal-content">
       <div class="modal-content__desc">
         <p class="modal-content__desc__thank">
@@ -142,6 +143,7 @@ watch(showModal, (newVal) => {
           kiểm tra hộp thư email để nhận thông tin chi tiết về tài khoản doanh
           nghiệp và các bước tiếp theo.
         </p>
+
         <p class="modal-content__desc__thank">
           Trong thời gian chờ đợi, bạn có thể tham khảo thêm các thông tin hữu
           ích dưới đây:
@@ -151,6 +153,7 @@ watch(showModal, (newVal) => {
         <button @click="scrollCards('prev')" class="scroll-button prev-button">
           <PrevIcon />
         </button>
+
         <div class="modal-content__list-card">
           <CardThankYouContacting
             v-for="card in listCard"
@@ -158,11 +161,13 @@ watch(showModal, (newVal) => {
             :card="card"
           />
         </div>
+
         <button @click="scrollCards('next')" class="scroll-button next-button">
           <NextIcon />
         </button>
       </div>
     </div>
+
     <div class="modal-footer">
       <Button class="btn-complete" @click="show">OK. Tôi đã hiểu!</Button>
     </div>

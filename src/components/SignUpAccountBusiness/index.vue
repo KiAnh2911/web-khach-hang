@@ -25,6 +25,7 @@ const formSignUpBusiness = reactive<ISignUpBusiness>({
 function show() {
   showModal.value = !showModal.value;
 }
+
 function onFinish(data: ISignUpBusiness) {
   showModal.value = !showModal.value;
   console.log("data", data);
