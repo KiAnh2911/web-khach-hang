@@ -4,11 +4,18 @@ import { ref } from "vue";
 import { CloseIcon, NextIcon, PrevIcon } from "../../assets";
 import CardThankYouContacting from "../CardThankYouContacting/index.vue";
 
+export interface ICard {
+  id: number;
+  url: string;
+  title: string;
+  desc: string;
+}
+
 defineExpose({ show });
 
 const showModal = ref(false);
 
-const listCard = [
+const listCard: ICard[] = [
   {
     id: 1,
     url: "https://s3-alpha-sig.figma.com/img/d82c/8d39/622de0951fabc7c325262107e7a192ac?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZgXxrXEgJP67M~RwRNpVEiyNrXJxHNULZE8O3rozq26N0qwg6UAPJpbrngefQtemPpC8j99xXbIpCTZ1dS7DPiBsTmMN9wJXge1Q4NKOOCUFkW9qTZ0JdJno5ReeQ0Zyv3gn6A60nihMStQyHGxvZKcksELTyffeE~-sqSdY6GnuT1kxGAsGpLOBDuPHcXmvDnY8qOr319jn2B3TVRTtJmTJMy3X~jyu4ZJhwWiT5sUui5W6vWlPR6pxNJ~WX1dZKIVsNwycMvgPY888sme8SH4MOGLy55nJu8miWtQ9iKNNzlScWhSG4Mt7OOwj2pi0Bf9U9iGKFAGwQTAj1eDP2g__",
@@ -152,6 +159,4 @@ function handleScroll(event: WheelEvent) {
   </Modal>
 </template>
 
-<style lang="scss">
-@import "./index.scss";
-</style>
+<style lang="scss" src="./styles.scss"></style>

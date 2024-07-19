@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
+import { ICard } from "../ThanksContactingUs/index.vue";
 
-const props = defineProps(["card"]);
+interface Props {
+  card: ICard;
+}
+
+const props = defineProps<Props>();
 const { card } = toRefs(props);
 </script>
 

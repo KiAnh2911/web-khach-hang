@@ -128,6 +128,4 @@ function onFinish(data: ISignUpBusiness) {
   </Modal>
 </template>
 
-<style lang="scss">
-@import "./index.scss";
-</style>
+<style lang="scss" src="./styles.scss"></style>
