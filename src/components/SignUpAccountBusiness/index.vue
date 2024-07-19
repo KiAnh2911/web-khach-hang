@@ -1,6 +1,7 @@
 <script lang="ts" setup>
+import { Button, Form, FormItem, Input, Modal } from "ant-design-vue";
 import { reactive, ref } from "vue";
-import { Modal, Input, Button, Form, FormItem } from "ant-design-vue";
+import { CloseIcon } from "../../assets";
 
 defineExpose({ show });
 
@@ -35,33 +36,19 @@ function onFinish(data: ISignUpBusiness) {
 
 <template>
   <Modal v-model:open="showModal" footer :closable="false" class="modal-signup">
-    <div class="modal-header">
-      <h2 class="title-modal">Đăng ký tài khoản doanh nghiệp</h2>
-      <div class="icon-close" @click="show">
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            width="1.1659"
-            height="12.8707"
-            rx="0.582949"
-            transform="matrix(0.701754 0.712419 -0.701754 0.712419 9.18188 0)"
-            fill="#EA4025"
-          />
-          <rect
-            width="1.1659"
-            height="12.8707"
-            rx="0.582949"
-            transform="matrix(0.701754 -0.712419 0.701754 0.712419 0 0.830627)"
-            fill="#EA4025"
-          />
-        </svg>
+    <div class="t-flex t-justify-between t-items-center t-p-4 line-border-b">
+      <h2 class="t-text-lg t-font-medium t-leading-6 t-text-black t-m-0">
+        Cảm ơn bạn đã liên hệ với chúng tôi
+      </h2>
+
+      <div
+        class="t-flex t-items-center t-rounded-full t-justify-center t-w-[22px] t-h-[22px] t-bg-inactive t-cursor-pointer"
+        @click="show"
+      >
+        <CloseIcon />
       </div>
     </div>
+
     <Form
       :model="formSignUpBusiness"
       name="basic"
@@ -69,8 +56,8 @@ function onFinish(data: ISignUpBusiness) {
       ref="formRef"
       @finish="onFinish"
     >
-      <div class="modal-content">
-        <p class="modal-content__desc">
+      <div class="modal-content t-p-4">
+        <p class="t-m-0 t-text-base t-leading-6 t-mb-6">
           Để được tư vấn và hỗ trợ tạo tài khoản đối tác, vui lòng nhập thông
           tin doanh nghiệp của bạn
         </p>
@@ -130,8 +117,12 @@ function onFinish(data: ISignUpBusiness) {
         </FormItem>
       </div>
 
-      <FormItem class="modal-footer">
-        <Button class="btn-complete" html-type="submit">Hoàn thành</Button>
+      <FormItem class="t-p-4 t-flex t-justify-end t-mb-0">
+        <Button
+          class="t-bg-ghtk t-text-white t-h-10 t-rounded t-text-base t-font-medium t-leading-6 t-px-3 t-py-2"
+          html-type="submit"
+          >Hoàn thành</Button
+        >
       </FormItem>
     </Form>
   </Modal>

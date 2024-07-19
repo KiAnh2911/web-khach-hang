@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, watch } from "vue";
 import { Button, Modal } from "ant-design-vue";
+import { ref } from "vue";
+import { CloseIcon, NextIcon, PrevIcon } from "../../assets";
 import CardThankYouContacting from "../CardThankYouContacting/index.vue";
-import NextIcon from "../../assets/next.svg";
-import PrevIcon from "../../assets/prev.svg";
-import { onBeforeUnmount } from "vue";
 
 defineExpose({ show });
 
@@ -54,7 +52,7 @@ function show() {
 }
 
 function scrollCards(direction: string) {
-  const scrollContainer = document.querySelector(".modal-content__list-card");
+  const scrollContainer = document.querySelector(".card-list");
   const cardWidth = 320;
   const gap = 16;
 
@@ -80,25 +78,6 @@ function handleScroll(event: WheelEvent) {
     scrollCards("prev");
   }
 }
-
-watch(showModal, (newVal) => {
-  nextTick(() => {
-    const scrollContainer = document.querySelector(
-      ".modal-content__list-card"
-    ) as HTMLElement;
-    if (newVal) {
-      if (scrollContainer) {
-        scrollContainer.addEventListener("wheel", handleScroll, {
-          passive: true,
-        });
-      }
-    } else {
-      if (scrollContainer) {
-        scrollContainer.removeEventListener("wheel", handleScroll);
-      }
-    }
-  });
-});
 </script>
 
 <template>
@@ -108,53 +87,45 @@ watch(showModal, (newVal) => {
     class="modal-thankyou"
     :closable="false"
   >
-    <div class="modal-header">
-      <h2 class="title-modal">Cảm ơn bạn đã liên hệ với chúng tôi</h2>
-      <div class="icon-close" @click="show">
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            width="1.1659"
-            height="12.8707"
-            rx="0.582949"
-            transform="matrix(0.701754 0.712419 -0.701754 0.712419 9.18188 0)"
-            fill="#EA4025"
-          />
-          <rect
-            width="1.1659"
-            height="12.8707"
-            rx="0.582949"
-            transform="matrix(0.701754 -0.712419 0.701754 0.712419 0 0.830627)"
-            fill="#EA4025"
-          />
-        </svg>
+    <div class="t-flex t-justify-between t-items-center t-p-4 line-border-b">
+      <h2 class="t-text-lg t-font-medium t-leading-6 t-text-black t-m-0">
+        Cảm ơn bạn đã liên hệ với chúng tôi
+      </h2>
+
+      <div
+        class="t-flex t-items-center t-rounded-full t-justify-center t-w-[22px] t-h-[22px] t-bg-inactive t-cursor-pointer"
+        @click="show"
+      >
+        <CloseIcon />
       </div>
     </div>
 
-    <div class="modal-content">
-      <div class="modal-content__desc">
-        <p class="modal-content__desc__thank">
+    <div class="modal-content t-p-4 t-pr-0">
+      <div class="t-mb-6">
+        <p class="t-text-base t-font-normal t-leading-6 t-m-0 t-mb-3">
           Giao Hàng Tiết Kiệm (GHTK) sẽ nhanh chóng liên hệ với bạn. Vui lòng
           kiểm tra hộp thư email để nhận thông tin chi tiết về tài khoản doanh
           nghiệp và các bước tiếp theo.
         </p>
 
-        <p class="modal-content__desc__thank">
+        <p class="t-text-base t-font-normal t-leading-6 t-m-0">
           Trong thời gian chờ đợi, bạn có thể tham khảo thêm các thông tin hữu
           ích dưới đây:
         </p>
       </div>
-      <div class="modal-content__list">
-        <button @click="scrollCards('prev')" class="scroll-button prev-button">
+
+      <div class="t-flex t-items-center t-pl-4 modal-content__list">
+        <button
+          @click="scrollCards('prev')"
+          class="scroll-button t-absolute t-bg-white t-w-10 t-h-10 t-rounded-full t-border-0 t-cursor-pointer t-p-0 t-hidden t-top-1/2 t-left-3 t-translate-y-1/2 t-z-10"
+        >
           <PrevIcon />
         </button>
 
-        <div class="modal-content__list-card">
+        <div
+          class="card-list t-relative t-flex t-gap-4 t-overflow-hidden t-snap-x t-snap-mandatory t-scroll-smooth"
+          @mousewheel.passive="handleScroll"
+        >
           <CardThankYouContacting
             v-for="card in listCard"
             :key="card.id"
@@ -162,14 +133,21 @@ watch(showModal, (newVal) => {
           />
         </div>
 
-        <button @click="scrollCards('next')" class="scroll-button next-button">
+        <button
+          @click="scrollCards('next')"
+          class="scroll-button t-absolute t-bg-white t-w-10 t-h-10 t-rounded-full t-border-0 t-cursor-pointer t-p-0 t-hidden t-top-1/2 t-right-3 t-translate-y-1/2 t-z-10 t-mt-1.5-"
+        >
           <NextIcon />
         </button>
       </div>
     </div>
 
-    <div class="modal-footer">
-      <Button class="btn-complete" @click="show">OK. Tôi đã hiểu!</Button>
+    <div class="t-p-4 t-flex t-justify-end t-mb-0">
+      <Button
+        class="t-bg-ghtk t-text-white t-h-10 t-rounded t-text-base t-font-medium t-leading-6 t-px-3 t-py-2"
+        @click="show"
+        >OK. Tôi đã hiểu!</Button
+      >
     </div>
   </Modal>
 </template>
