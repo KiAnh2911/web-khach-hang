@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { Button } from "ant-design-vue";
+import { ref } from "vue";
 import SignUpAccountBusiness from "./components/SignUpAccountBusiness/index.vue";
-import ThanksContactingUs from "./components/ThanksContactingUs/index.vue";
+// import ThanksContactingUs from "./components/ThanksContactingUs/index.vue";
 
 const modalSignUpAccountRef = ref();
 const modalThankYouRef = ref();
@@ -17,10 +17,10 @@ function handleModalThankYou() {
 
 <template>
   <Button @click="handleModalSignUpAccount">Sign Up</Button>
-  <Button @click="handleModalThankYou">Thanks you contacting us</Button>
+  <!-- <Button @click="handleModalThankYou">Thanks you contacting us</Button> -->
 
   <SignUpAccountBusiness ref="modalSignUpAccountRef" />
-  <ThanksContactingUs ref="modalThankYouRef" />
+  <!-- <ThanksContactingUs ref="modalThankYouRef" /> -->
 </template>
 
 <style scoped>

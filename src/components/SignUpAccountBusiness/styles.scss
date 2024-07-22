@@ -1,13 +1,6 @@
-.modal-signup {
-  width: 720px !important;
-  & .ant-modal-content {
-    padding: 0;
-  }
-}
 // content
 .modal-content {
-  border-bottom: 1px solid #aeb0b6;
-  & .ant-form-item:last-child {
+  :deep(.ant-form-item:last-child) {
     margin-bottom: 0 !important;
   }
   input {
@@ -16,14 +9,26 @@
     border: 1px solid #e8e8e8;
     outline: none;
     font-size: 16px;
+    height: 44px;
     &::placeholder {
       font-size: 16px;
       line-height: 24px;
       color: #7a7a7a;
     }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    &:hover .scroll-button {
+      display: block;
+    }
   }
 }
 
 .line-border-b {
-  border-bottom: 1px solid #aeb0b6;
+  border-bottom: 1px solid #e8e8e8;
 }

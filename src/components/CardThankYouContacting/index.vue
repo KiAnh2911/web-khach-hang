@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
-import { ICard } from "../ThanksContactingUs/index.vue";
+import { ICard } from "../SignUpAccountBusiness/index.vue";
 
 interface Props {
   card: ICard;
